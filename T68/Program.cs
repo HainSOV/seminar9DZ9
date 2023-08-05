@@ -1,2 +1,29 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿    static void Main()
+    {
+        // Вводим значения m и n
+        Console.Write("Введите значение m: ");
+        int m = int.Parse(Console.ReadLine());
+
+        Console.Write("Введите значение n: ");
+        int n = int.Parse(Console.ReadLine());
+
+        // Вычисляем и выводим результат функции Аккермана
+        int result = AckermannFunction(m, n);
+        Console.WriteLine($"A({m}, {n}) = {result}");
+    }
+
+    static int AckermannFunction(int m, int n)
+    {
+        if (m == 0)
+        {
+            return n + 1;
+        }
+        else if (n == 0)
+        {
+            return AckermannFunction(m - 1, 1);
+        }
+        else
+        {
+            return AckermannFunction(m - 1, AckermannFunction(m, n - 1));
+        }
+    }
